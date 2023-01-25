@@ -140,5 +140,3 @@ app.listen(process.env.PORT, function () {
   console.log("Server started on port 3000");
 });
 
-
-module.exports = app
