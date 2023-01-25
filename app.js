@@ -12,7 +12,6 @@ app.set("view engine", "ejs");
 require('dotenv').config()
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(express.static("public"));
-app.use('/', express.static(path.resolve(__dirname, 'public')));
 
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.DB_STRING)
