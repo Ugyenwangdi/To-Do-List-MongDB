@@ -13,7 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 mongoose.set("strictQuery", false);
-mongoose.connect(process.env.DB_STRING);
+mongoose.connect(process.env.DB_STRING)
+  .then(() => console.log('Connected!'));
 
 const itemsSchema = {
   name: String,
