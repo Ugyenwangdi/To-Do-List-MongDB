@@ -11,8 +11,7 @@ const app = express();
 app.set("view engine", "ejs");
 require('dotenv').config()
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(express.static("public"));
-// app.use('/', express.static(path.resolve(__dirname, 'public')));
+app.use(express.static("public"));
 
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.DB_STRING)
@@ -58,7 +57,7 @@ app.get("/", function (req, res) {
 
       res.redirect("/");
     } else {
-      res.render("/list", { listTitle: "Today", newListItems: foundItems });
+      res.render("list", { listTitle: "Today", newListItems: foundItems });
     }
   });
 });
@@ -79,7 +78,7 @@ app.get("/:customListName", function (req, res) {
         res.redirect("/" + customListName);
       } else {
         // Show an existing list
-        res.render("/list", {
+        res.render("list", {
           listTitle: foundList.name,
           newListItems: foundList.items,
         });
@@ -129,11 +128,11 @@ app.post("/delete", function (req, res) {
 });
 
 app.get("/work", function (req, res) {
-  res.render("/list", { listTitle: "Work List", newListItems: workItems });
+  res.render("list", { listTitle: "Work List", newListItems: workItems });
 });
 
 app.get("/about", function (req, res) {
-  res.render("/about");
+  res.render("about");
 });
 
 app.listen(process.env.PORT, function () {
