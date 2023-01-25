@@ -57,7 +57,7 @@ app.get("/", function (req, res) {
 
       res.redirect("/");
     } else {
-      res.render("list", { listTitle: "Today", newListItems: foundItems });
+      res.render("/public/list", { listTitle: "Today", newListItems: foundItems });
     }
   });
 });
@@ -78,7 +78,7 @@ app.get("/:customListName", function (req, res) {
         res.redirect("/" + customListName);
       } else {
         // Show an existing list
-        res.render("list", {
+        res.render("/public/list", {
           listTitle: foundList.name,
           newListItems: foundList.items,
         });
@@ -128,7 +128,7 @@ app.post("/delete", function (req, res) {
 });
 
 app.get("/work", function (req, res) {
-  res.render("list", { listTitle: "Work List", newListItems: workItems });
+  res.render("/public/list", { listTitle: "Work List", newListItems: workItems });
 });
 
 app.get("/about", function (req, res) {
